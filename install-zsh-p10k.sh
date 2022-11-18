@@ -5,6 +5,7 @@
 apt install -y zsh git curl fontconfig
 
 ## Install oh-my-zsh
+echo "YOU MUST TYPE `exit` ONCE oh-my-zsh IS FINISHED INSTALLING
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 ## Download and install necessary fonts
@@ -27,13 +28,13 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 ## Set theme and plugins
-sed -zi 's:ZSH_THEME="robbyrussel":ZSH_THEME="powerlevel10k/powerlevel10k:g"' ~/.zshrc
+sed -zi 's:ZSH_THEME="robbyrussell":ZSH_THEME="powerlevel10k/powerlevel10k":g' ~/.zshrc
 sed -zi 's:plugins=(git):plugins=(git zsh-z zsh-autosuggestions zsh-syntax-highlighting):g' ~/.zshrc
 
-## Backup original .p10k.conf and replace with Drauku's custom .p10k.conf
-cp ~/.p10k.conf ~/.p10k.conf.original
-wget https://gist.githubusercontent.com/Drauku/install-zsh-p10k/main/.p10k.zsh.custom
-cp ~/.p10k.custom ~/.p10k.conf
+## Backup original .p10k.conf and replace with Drauku's custom .p10k.zsh conf file
+wget https://raw.githubusercontent.com/Drauku/install-zsh-p10k/main/.p10k.zsh.custom -O ~/.p10k.zsh.custom
+cp ~/.p10k.zsh ~/.p10k.zsh.original
+cp ~/.p10k.zsh.custom ~/.p10k.zsh
 
 ## Installation finish notification and instructions
 echo " ZSH, OH-MY-ZSH, POWERLEVEL10k, P10k addons, and Drauku's custom .p10k.zsh have been installed."
