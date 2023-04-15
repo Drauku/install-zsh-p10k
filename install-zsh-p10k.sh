@@ -53,7 +53,7 @@ cp --backup ~/.p10k.zsh.custom ~/.p10k.zsh
 # done
 
 ## install docker
-sh -c "$(curl -fsSL https://get.docker.com)"
+#sh -c "$(curl -fsSL https://get.docker.com)"
 
 ## exit the current shell, forcing a re-log in to activate the new custom shell format
 exit
