@@ -14,8 +14,8 @@ curl -LO https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF
 fc-cache -f -v
 
 ## install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y
 echo "ONCE 'oh-my-zsh' IS FINISHED INSTALLING, TYPE 'exit' TO CONTINUE THIS SCRIPT"
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y
 
 ## download powerlevel10k theme
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}/themes/powerlevel10k"
@@ -42,7 +42,7 @@ sed -i '1i # Enable Powerlevel10k instant prompt. Should stay close to the top o
 
 ## backup original .p10k.conf and replace with drauku's custom .p10k.conf
 curl -fs https://raw.githubusercontent.com/Drauku/install-zsh-p10k/main/.p10k.zsh.custom -o ~/.p10k.zsh.custom
-[[ ! -f ~/.p10k.zsh.original ]] || cp ~/.p10k.zsh ~/.p10k.original
+[[ ! -f ~/.p10k.zsh.original ]] || cp ~/.p10k.zsh ~/.p10k.zsh.original
 cp --backup ~/.p10k.zsh.custom ~/.p10k.zsh
 
 # ## add queried user
