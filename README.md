@@ -4,7 +4,7 @@ Installation script for `zsh` and `powerlevel10k` with my custom `.p10k.zsh` con
 - Run this terminal command while logged into the account on which you want these changes:
   NOTE: The below command downloads and immediately executes the script. If you do not understand what each line of the script does, this could be unsafe.
 ```bash
-sh -c "$(curl -fsSL https://raw.github.com/drauku/install-zsh-p10k/master/install-zsh-p10k.sh)"
+sh -c "$(wget https://raw.github.com/drauku/install-zsh-p10k/master/install-zsh-p10k.sh)"
 ```
 
 ### SOURCES
