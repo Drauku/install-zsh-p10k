@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 ## a script to install zsh, oh-my-zsh, powerlevel10k, meslo lgs fonts, zsh plugins
 
 ## download and run this script with this command: sh -c "$(curl -fsSL https://raw.github.com/drauku/install-zsh-p10k/master/install-zsh-p10k.sh)"
 
 # user warning to exit initial zsh shell to continue this script
-echo "ONCE 'oh-my-zsh' IS FINISHED INSTALLING, TYPE 'exit' TO CONTINUE THIS SCRIPT"
+printf "\n ONCE 'oh-my-zsh' IS FINISHED INSTALLING,\n  TYPE 'y' TO SET 'zsh' AS THE DEFAULT SHELL,\n  THEN TYPE 'exit' TO CONTINUE THE SCRIPT\n"
 sleep 5
 
 ## install required apps
@@ -30,7 +30,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}/themes/powerlevel10k"
 
 ## backup original .zshrc and set theme, plugins, and auto load the .p10k.zsh on terminal session start
-[[ ! -f ~/.zshrc.original ]] && cp ~/.zshrc ~/.zshrc.original
+[ ! -f ~/.zshrc.original ] && cp ~/.zshrc ~/.zshrc.original
 sed -zi 's|ZSH_THEME="robbyrussell"|ZSH_THEME="powerlevel10k/powerlevel10k"|g' ~/.zshrc
 sed -zi 's|plugins=(git)|plugins=(git zsh-z zsh-autosuggestions zsh-syntax-highlighting)|g' ~/.zshrc
 sed -i '1i \ source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"; fi\n' ~/.zshrc
@@ -46,8 +46,18 @@ sed -i '1i # Enable Powerlevel10k instant prompt. Should stay close to the top o
 
 ## backup original .p10k.conf and replace with drauku's custom .p10k.conf
 curl -fs https://raw.githubusercontent.com/Drauku/install-zsh-p10k/main/.p10k.zsh.custom -o ~/.p10k.zsh.custom
-[[ ! -f ~/.p10k.zsh.original ]] && cp ~/.p10k.zsh ~/.p10k.zsh.original
+[ ! -f ~/.p10k.zsh.original ] && cp ~/.p10k.zsh ~/.p10k.zsh.original
 cp --backup ~/.p10k.zsh.custom ~/.p10k.zsh
 
 ## exit the current shell, forcing a re-log in to activate the new custom shell format
-exit
+    printf "\n  ZSH, Meslo Nerd Fonts, PowerLevel10k theme, and addons are installed.\n You must reload the shell to activate these changes.\n"
+    while read -r "\n  'exit' the shell now? [Y]es/[N]o " input; do
+      case "${input}" in
+        ([nN]|[nN][oO])
+          break;
+          ;;
+        ([yY]|[yY][eE][sS])
+          exit 1;
+          ;;
+      esac
+    done
