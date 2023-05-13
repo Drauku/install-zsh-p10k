@@ -4,7 +4,7 @@
 ## download and run this script with this command: sh -c "$(curl -fsSL https://raw.github.com/drauku/install-zsh-p10k/master/install-zsh-p10k.sh)"
 
 # user warning to exit initial zsh shell to continue this script
-printf "\n ONCE 'oh-my-zsh' IS FINISHED INSTALLING,\n  TYPE 'y' TO SET 'zsh' AS THE DEFAULT SHELL,\n  THEN TYPE 'exit' TO CONTINUE THE SCRIPT\n"
+printf "\n ONCE 'oh-my-zsh' IS FINISHED INSTALLING,\n  TYPE 'y' TO SET 'zsh' AS THE DEFAULT SHELL,\n  THEN TYPE 'exit' TO CONTINUE THE SCRIPT.\n\n"
 sleep 5
 
 ## install required apps
@@ -20,11 +20,6 @@ fc-cache -f -v
 
 ## install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y
-
-## download zsh-z zsh-autosuggestions zsh-syntax-highlighting plugin
-git clone https://github.com/agkozak/zsh-z "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-z"
-git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
 
 ## download powerlevel10k theme
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}/themes/powerlevel10k"
@@ -49,9 +44,15 @@ curl -fs https://raw.githubusercontent.com/Drauku/install-zsh-p10k/main/.p10k.zs
 [ ! -f ~/.p10k.zsh.original ] && cp ~/.p10k.zsh ~/.p10k.zsh.original
 cp --backup ~/.p10k.zsh.custom ~/.p10k.zsh
 
+## download zsh-z zsh-autosuggestions zsh-syntax-highlighting plugin
+git clone https://github.com/agkozak/zsh-z "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-z"
+git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+
 ## exit the current shell, forcing a re-log in to activate the new custom shell format
-    printf "\n  ZSH, Meslo Nerd Fonts, PowerLevel10k theme, and addons are installed.\n You must reload the shell to activate these changes.\n"
-    while read -r "\n  'exit' the shell now? [Y]es/[N]o " input; do
+    printf "\n ZSH, Meslo Nerd Fonts, PowerLevel10k theme, and addons are installed.\n  You must reload the shell to activate these changes.\n"
+    printf "\n  'exit' the shell now? [Y]es/[N]o "
+    while read -r input; do
       case "${input}" in
         ([nN]|[nN][oO])
           break;
