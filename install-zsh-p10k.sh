@@ -2,6 +2,8 @@
 ## a script to install zsh, oh-my-zsh, powerlevel10k, meslo lgs fonts, zsh plugins
 ## docker-ce will be installed, as well as adding a 'docker' user and 'docker' group
 
+## download and run this script with this command: sh -c "$(curl -fsSL https://)"
+
 ## install required apps
 apt update -y && apt upgrade -y && apt install -y curl fontconfig git zsh
 
